@@ -3,7 +3,7 @@
 MONGO_HOST=$1
 ARCHIVE_NAME=$2
 
-[ ! -d "pulp-2to3-migration-test-fixtures" ] && git clone https://github.com/pulp/pulp-2to3-migration-test-fixtures
+[ ! -d "pulp-2to3-migration-test-fixtures" ] && git clone https://github.com/ATIX-AG/pulp-2to3-migration-test-fixtures.git -b add_debian_repos
 sudo rm -rf /var/lib/pulp/content
 sudo rm -rf /var/lib/pulp/published
 cp -r pulp-2to3-migration-test-fixtures/${ARCHIVE_NAME}/var/lib/pulp/content /var/lib/pulp/

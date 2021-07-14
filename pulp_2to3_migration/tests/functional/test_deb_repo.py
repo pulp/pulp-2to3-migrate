@@ -9,20 +9,25 @@ from .deb_base import BaseTestDeb, RepoInfo
 PULP_2_DEB_DATA = {
     "remotes": 3,
     "content_initial": {
-        "debian-empty": {},
+        "debian-empty": {
+            "component": 0,
+        },
         "debian": {
             "package": 4,
             "component": 2,
+            "architecture": 2,
             "release": 1,
         },
         "debian-complex-dists": {
             "package": 4,
             "component": 2,
+            "architecture": 2,
             "release": 1,
         },
         "debian_update": {
             "package": 3,
             "component": 2,
+            "architecture": 1,
             "release": 1,
         },
     },
@@ -105,7 +110,7 @@ class BaseTestDebRepo(BaseTestDeb):
         )
         for dist in self.deb_distribution_api.list().results:
             with self.subTest(dist=dist):
-                base_path = "-".join(dist.name.split("-")[1:])
+                base_path = "/" + "-".join(dist.name.split("-")[1:])
                 self.assertEqual(dist.base_path, base_path)
 
 
